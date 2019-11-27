@@ -41,6 +41,7 @@ int _arrayMalloc(char **argv, size_t buffersize, char **av)
 			perror("malloc");
 			for (j = 0; j < buffersize; j++)
 				free(argv[j]);
+
 			free(argv);
 			perror(av[0]);
 			exit(EXIT_FAILURE);
@@ -82,7 +83,7 @@ int parenting(char *dest, char **argv, char **av)
 		if (execve(argv[0], argv, NULL) == -1)
 		{
 			perror(av[0]);
-			exit(0);
+			exit(1);
 		}
 	}
 	else
@@ -102,7 +103,10 @@ int bulties(char **argv, char **env)
 	while (argv[i])
 		i++;
 	if (i > 2 && _strcmp(argv[0], "exit") == 0)
+	{
+		perror("Error");
 		return (1);
+	}
 	else if (i == 1 && _strcmp(argv[0], "exit") == 0)
 		exit(EXIT_SUCCESS);
 	else if (_strcmp(argv[0], "exit") == 0)
