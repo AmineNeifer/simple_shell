@@ -22,11 +22,11 @@ const char *path;
 (void)ac;
 char *buffer, **argv, *token, *dest, *token1;
 size_t buffersize = 100;
-buffer = malloc(buffersize);
+buffer = malloc(buffersize * sizeof(char));
 _check(buffer, av);
-token = malloc(buffersize);
+token = malloc(buffersize * sizeof(char));
 _check(token, av);
-dest = malloc(buffersize);
+dest = malloc(buffersize * sizeof(char));
 _check(dest, av);
 argv = malloc(buffersize);
 if (argv == NULL)
